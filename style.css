@@ -271,9 +271,15 @@ main {
 }
 
 .card {
-  background: var(--card);
+  /* jersey-trim stripe on top + faint court arc in the corner */
+  background:
+    linear-gradient(var(--red) 0 6px, #fff 6px 8px, #1a1a1a 8px 10px, transparent 10px),
+    radial-gradient(circle at 100% 100%, transparent 0 78px, rgba(230, 57, 70, .1) 79px 82px, transparent 83px),
+    radial-gradient(circle at 100% 100%, transparent 0 150px, rgba(230, 57, 70, .07) 151px 154px, transparent 155px),
+    var(--card);
   border-radius: var(--radius);
-  padding: 26px 24px;
+  overflow: hidden;
+  padding: 32px 24px 26px;
   box-shadow: 0 10px 30px rgba(106, 4, 15, .08);
 }
 
@@ -353,7 +359,16 @@ main {
 .emoji-list .e { font-style: normal; font-size: 1.6em; line-height: 1; vertical-align: middle; }
 
 .swatches { display: flex; gap: 8px; margin-top: 8px; }
-.swatches i { width: 28px; height: 28px; border-radius: 50%; display: block; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
+.swatches i {
+  width: 34px;
+  height: 38px;
+  display: block;
+  background: var(--c);
+  -webkit-mask: var(--jersey) center / contain no-repeat;
+  mask: var(--jersey) center / contain no-repeat;
+  filter: drop-shadow(0 0 1px rgba(0,0,0,.35));
+  --jersey: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 38'%3E%3Cpath d='M9 1h5c0 3 1.5 5 3 5s3-2 3-5h5l1 6c0 3 2 4 4 4v26H4V11c2 0 4-1 4-4z'/%3E%3C/svg%3E");
+}
 
 /* FORMS */
 form { display: grid; gap: 14px; margin-top: 16px; }
@@ -397,3 +412,41 @@ form .btn { justify-self: start; }
 .status.err { color: #d14b4b; }
 
 .thanks { text-align: center; font-size: 1.1rem; font-weight: 700; color: var(--red-deep); padding: 12px 8px; }
+
+.scoreboard {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 14px;
+  padding: 12px 26px;
+  border-radius: 16px;
+  background: #1a1a1a;
+  border: 4px solid #3a3a3a;
+  box-shadow: 0 8px 0 rgba(0,0,0,.18);
+}
+
+.scoreboard div { display: grid; }
+.scoreboard small { color: #fff; font-size: .75rem; letter-spacing: .15em; text-transform: uppercase; }
+.scoreboard b {
+  font-family: "Baloo 2", sans-serif;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: #ffd166;
+  text-shadow: 0 0 10px rgba(255, 209, 102, .6);
+}
+.scoreboard .vs { font-size: 1.6rem; }
+
+.pass {
+  display: inline-block;
+  margin: 0 0 12px !important;
+  padding: 4px 14px;
+  border: 2px dashed var(--red);
+  border-radius: 999px;
+  color: var(--red-deep);
+  font-weight: 800;
+  font-size: .8rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.rsvp { outline: 2px dashed rgba(230, 57, 70, .35); outline-offset: -12px; }
