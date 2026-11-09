@@ -235,7 +235,7 @@ main {
 .grid-2 { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; }
 @media (max-width: 620px) { .grid-2 { grid-template-columns: 1fr; } }
 
-.icon { font-size: 1.8rem; }
+.icon { font-size: 2.6rem; line-height: 1.1; }
 .muted { color: var(--muted); }
 .sub { color: var(--red); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; font-size: .85rem; }
 .link { color: var(--red); font-weight: 700; text-decoration: none; }
@@ -295,8 +295,10 @@ main {
 .program span { color: var(--muted); font-size: .95rem; }
 
 .emoji-list { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 10px; }
-.emoji-list li { display: flex; gap: 12px; align-items: flex-start; padding: 10px 12px; border-radius: 14px; background: var(--bg); }
-.emoji-list li > span { font-size: 1.5rem; line-height: 1.2; flex-shrink: 0; }
+.emoji-list li { display: flex; gap: 14px; align-items: flex-start; padding: 10px 12px; border-radius: 14px; background: var(--bg); }
+.emoji-list li { align-items: center; }
+.emoji-list li > span { font-size: 2.6rem; line-height: 1; flex-shrink: 0; }
+.emoji-list .e { font-style: normal; font-size: 1.6em; line-height: 1; vertical-align: middle; }
 
 .swatches { display: flex; gap: 8px; margin-top: 8px; }
 .swatches i { width: 28px; height: 28px; border-radius: 50%; display: block; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
