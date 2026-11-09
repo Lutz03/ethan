@@ -275,7 +275,7 @@ main {
   background:
     linear-gradient(var(--red) 0 6px, #fff 6px 8px, #1a1a1a 8px 10px, transparent 10px),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23e63946' stroke-opacity='.14' stroke-width='3' stroke-linecap='round'%3E%3Ccircle cx='50' cy='50' r='46'/%3E%3Cpath d='M50 4V96M4 50H96M19 17Q42 50 19 83M81 17Q58 50 81 83'/%3E%3C/g%3E%3C/svg%3E") right -36px bottom -36px / 150px no-repeat,
-    var(--card);
+    var(--card-bg, var(--card));
   border-radius: var(--radius);
   overflow: hidden;
   padding: 32px 24px 26px;
@@ -285,6 +285,11 @@ main {
 .card h2 { margin: 0 0 6px; color: var(--red-deep); font-size: 1.8rem; line-height: 1.2; }
 .card h3 { margin: 4px 0 6px; color: var(--red-deep); font-size: 1.3rem; }
 .card p { margin: 0 0 10px; }
+
+/* alternating light-red sections */
+.alt { --card-bg: #ffe6e3; }
+.alt .program li,
+.alt .emoji-list li { background: #fff; }
 
 .intro { text-align: center; background: var(--maroon); color: #fff; border-top: 6px solid var(--ball); }
 .intro h2 { color: #fff; white-space: nowrap; font-size: clamp(1.15rem, 6vw, 1.8rem); }
