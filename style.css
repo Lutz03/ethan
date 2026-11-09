@@ -462,14 +462,17 @@ main {
 .btn.pulse {
   position: relative;
   overflow: hidden;
-  animation: pulse 1.8s ease-out infinite, jiggle 3.2s ease-in-out infinite;
+  animation: pulse 1.8s ease-out infinite, jiggle 1.8s ease-in-out infinite;
 }
 @keyframes jiggle {
-  0%, 78%, 100% { transform: translateY(0) rotate(0); }
-  82% { transform: translateY(-7px) rotate(-5deg) scale(1.06); }
-  86% { transform: translateY(0) rotate(5deg); }
-  90% { transform: translateY(-3px) rotate(-3deg); }
-  94% { transform: translateY(0) rotate(2deg); }
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  8%  { transform: translateY(0) scale(1.12, .86); }
+  22% { transform: translateY(-18px) rotate(-6deg) scale(.95, 1.08); }
+  34% { transform: translateY(0) rotate(4deg) scale(1.1, .9); }
+  44% { transform: translateY(-9px) rotate(-3deg); }
+  54% { transform: translateY(0) rotate(2deg) scale(1.05, .95); }
+  62% { transform: translateY(-3px) rotate(0); }
+  70% { transform: translateY(0) scale(1, 1); }
 }
 .btn.pulse::after {
   content: "";
@@ -484,7 +487,6 @@ main {
   pointer-events: none;
 }
 @keyframes shine { 0%, 55% { left: -60%; } 100% { left: 130%; } }
-.btn .spin { display: inline-block; animation: spin 1.4s linear infinite; }
 
 .rsvp.flash { animation: flash 1s ease-in-out 2; }
 @keyframes flash {
@@ -498,7 +500,7 @@ main {
 .btn.pulse:hover { animation: pulse 1.8s ease-out infinite; transform: translateY(-3px) scale(1.08); }
 
 @media (prefers-reduced-motion: reduce) {
-  .rsvp-title span, .dribble, .btn.pulse, .btn.pulse::after, .btn .spin, .rsvp.flash { animation: none; }
+  .rsvp-title span, .dribble, .btn.pulse, .btn.pulse::after, .rsvp.flash { animation: none; }
   .js .program li.hide { opacity: 1; transform: none; }
   .ball-badge, .one, .fun-gif-btn.jump .fun-gif { animation: none; }
 }
