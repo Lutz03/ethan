@@ -356,6 +356,87 @@ main {
 .program strong { display: block; }
 .program span { color: var(--muted); font-size: .95rem; }
 
+/* game-plan extras */
+.program { position: relative; }
+.program::after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  top: 24px;
+  bottom: 24px;
+  border-left: 3px dashed var(--ball);
+  opacity: .6;
+  z-index: 0;
+}
+.program li { z-index: 1; padding-right: 64px; transition: transform .5s cubic-bezier(.2, .9, .3, 1.3), opacity .5s, box-shadow .2s; }
+.program li:hover { box-shadow: 0 6px 16px rgba(181, 18, 27, .12); transform: scale(1.02); }
+.program li::before { z-index: 1; transition: transform .7s ease-out; }
+
+.tag {
+  display: inline-block;
+  margin-bottom: 2px;
+  padding: 1px 8px;
+  border-radius: 6px;
+  background: var(--red-deep);
+  color: #fff;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.step-emoji {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-style: normal;
+  font-size: 2.2rem;
+  line-height: 1;
+}
+.program li:hover .step-emoji { animation: wiggle .5s ease-in-out 2; }
+@keyframes wiggle {
+  0%, 100% { transform: translateY(-50%) rotate(0); }
+  25% { transform: translateY(-50%) rotate(-14deg) scale(1.15); }
+  75% { transform: translateY(-50%) rotate(14deg) scale(1.15); }
+}
+
+/* slide-in on scroll (only when JS is running) */
+.js .program li.hide { opacity: 0; transform: translateX(-30px); }
+.js .program li.hide::before { transform: translateY(-50%) rotate(-360deg); }
+
+.fun-gif-btn {
+  position: relative;
+  flex-shrink: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.fun-gif-btn .fun-gif { transform-origin: 50% 90%; }
+.fun-gif-btn.jump .fun-gif { animation: jolli-jump .9s cubic-bezier(.3, .7, .4, 1); }
+@keyframes jolli-jump {
+  0%   { transform: scale(1, 1); }
+  15%  { transform: scale(1.15, .85); }
+  45%  { transform: translateY(-46px) rotate(-360deg) scale(1.05); }
+  75%  { transform: translateY(0) rotate(-360deg) scale(.92, 1.08); }
+  100% { transform: rotate(-360deg) scale(1); }
+}
+
+.confetti-bit {
+  position: fixed;
+  z-index: 50;
+  font-size: 1.6rem;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .program li.hide { opacity: 1; transform: none; }
+  .ball-badge, .one, .fun-gif-btn.jump .fun-gif { animation: none; }
+}
+
 .emoji-list { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 10px; }
 .emoji-list li { display: flex; gap: 14px; align-items: flex-start; padding: 10px 12px; border-radius: 14px; background: var(--bg); }
 .emoji-list li { align-items: center; }

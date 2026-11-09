@@ -4,6 +4,9 @@ const SHEET_URL = "https://script.google.com/macros/s/AKfycbz4MR1qJZrQzx9XJm2uoM
 // Party start, Philippine time (UTC+8). Adjust the time if needed.
 const PARTY_DATE = new Date("2026-11-22T10:00:00+08:00");
 
+document.documentElement.classList.add("js");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 // Countdown
 const pad = (n) => String(n).padStart(2, "0");
 function tick() {
@@ -56,3 +59,55 @@ function wire(formId, successMsg) {
 }
 
 wire("rsvp-form", "Thank you! Your RSVP has been received. 💙");
+
+// Game plan: slide steps in on scroll
+const steps = document.querySelectorAll(".program li");
+if ("IntersectionObserver" in window && !reduceMotion) {
+  steps.forEach((li) => li.classList.add("hide"));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const i = [...steps].indexOf(entry.target);
+      entry.target.style.transitionDelay = `${(i % 7) * 90}ms`;
+      entry.target.classList.remove("hide");
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.2 });
+  steps.forEach((li) => io.observe(li));
+}
+
+// Confetti from Jollibee
+const BITS = ["🏀", "🎉", "🎈", "⭐", "🍗", "🏀"];
+function confetti(el) {
+  if (reduceMotion) return;
+  const r = el.getBoundingClientRect();
+  const x = r.left + r.width / 2;
+  const y = r.top + r.height / 2;
+  for (let i = 0; i < 26; i++) {
+    const bit = document.createElement("span");
+    bit.className = "confetti-bit";
+    bit.textContent = BITS[i % BITS.length];
+    bit.style.left = `${x}px`;
+    bit.style.top = `${y}px`;
+    document.body.appendChild(bit);
+    const dx = (Math.random() - 0.5) * 420;
+    const up = 120 + Math.random() * 220;
+    const spin = (Math.random() - 0.5) * 720;
+    bit.animate([
+      { transform: "translate(-50%, -50%) scale(.4)", opacity: 1 },
+      { transform: `translate(calc(-50% + ${dx * 0.6}px), calc(-50% - ${up}px)) rotate(${spin / 2}deg) scale(1)`, opacity: 1, offset: 0.4 },
+      { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${up}px)) rotate(${spin}deg) scale(.9)`, opacity: 0 },
+    ], { duration: 1400 + Math.random() * 600, easing: "cubic-bezier(.2,.6,.4,1)" }).onfinish = () => bit.remove();
+  }
+}
+
+const jolli = document.querySelector(".fun-gif-btn");
+if (jolli) {
+  jolli.addEventListener("click", () => {
+    jolli.classList.remove("jump");
+    void jolli.offsetWidth; // restart the animation on repeated taps
+    jolli.classList.add("jump");
+    confetti(jolli);
+  });
+  jolli.addEventListener("animationend", () => jolli.classList.remove("jump"));
+}
