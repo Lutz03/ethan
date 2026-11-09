@@ -49,6 +49,7 @@ function wire(formId, successMsg) {
       form.reset();
       status.textContent = successMsg;
       status.classList.add("ok");
+      confetti(button);
     } catch {
       status.textContent = "Something went wrong. Please try again.";
       status.classList.add("err");
@@ -58,7 +59,7 @@ function wire(formId, successMsg) {
   });
 }
 
-wire("rsvp-form", "Thank you! Your RSVP has been received. 💙");
+wire("rsvp-form", "Thank you! Your RSVP has been received. ❤️");
 
 // Game plan: slide steps in on scroll
 const steps = document.querySelectorAll(".program li");

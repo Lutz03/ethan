@@ -432,7 +432,43 @@ main {
   will-change: transform, opacity;
 }
 
+/* RSVP animations */
+.rsvp-title { display: flex; align-items: flex-end; gap: 2px; }
+.rsvp-title span {
+  display: inline-block;
+  animation: hop 2.6s ease-in-out infinite;
+  animation-delay: calc(var(--i) * .12s);
+}
+@keyframes hop {
+  0%, 30%, 100% { transform: translateY(0) rotate(0); }
+  8%  { transform: translateY(-16px) rotate(-8deg); }
+  16% { transform: translateY(0) scale(1.1, .9); }
+  22% { transform: translateY(-5px); }
+}
+
+.dribble {
+  display: inline-block;
+  margin-left: 12px;
+  font-style: normal;
+  font-size: .8em;
+  animation: dribble .55s cubic-bezier(.5, 0, .5, 1) infinite alternate;
+}
+@keyframes dribble {
+  0%   { transform: translateY(-22px) rotate(0); }
+  90%  { transform: translateY(0) scale(1, 1); }
+  100% { transform: translateY(2px) scale(1.15, .85) rotate(40deg); }
+}
+
+.btn.pulse { animation: pulse 1.8s ease-out infinite; }
+@keyframes pulse {
+  0%   { box-shadow: 0 6px 0 var(--ball-dark), 0 0 0 0 rgba(255, 209, 102, .8); }
+  70%  { box-shadow: 0 6px 0 var(--ball-dark), 0 0 0 18px rgba(255, 209, 102, 0); }
+  100% { box-shadow: 0 6px 0 var(--ball-dark), 0 0 0 0 rgba(255, 209, 102, 0); }
+}
+.btn.pulse:hover { transform: translateY(-2px) scale(1.05); }
+
 @media (prefers-reduced-motion: reduce) {
+  .rsvp-title span, .dribble, .btn.pulse { animation: none; }
   .js .program li.hide { opacity: 1; transform: none; }
   .ball-badge, .one, .fun-gif-btn.jump .fun-gif { animation: none; }
 }
