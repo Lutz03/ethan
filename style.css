@@ -461,6 +461,7 @@ main {
 
 .btn.pulse {
   position: relative;
+  transform-origin: 50% 100%;
   overflow: hidden;
   animation: pulse 1.8s ease-out infinite, jiggle 1.8s ease-in-out infinite;
 }
