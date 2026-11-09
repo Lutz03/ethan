@@ -69,6 +69,12 @@ h1, h2, h3, .eyebrow, .btn, .countdown span {
   pointer-events: none;
 }
 
+.court-top {
+  top: 0;
+  bottom: auto;
+  transform: translateX(-50%) scaleY(-1);
+}
+
 .hoop {
   position: absolute;
   top: 62px;
