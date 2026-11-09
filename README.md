@@ -20,10 +20,10 @@ The "RSVP" tab (including each guest's message to Ethan) is created automaticall
 
 ```bash
 git remote add origin https://github.com/<you>/<repo>.git
-git push -u origin master
+git push -u origin main
 ```
 
-Then on GitHub: **Settings → Pages → Deploy from a branch → master / (root)**.
+Then on GitHub: **Settings → Pages → Deploy from a branch → main / (root)**.
 The site will be at `https://<you>.github.io/<repo>/`.
 
 ## To customize
