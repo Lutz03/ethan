@@ -463,17 +463,21 @@ main {
   position: relative;
   transform-origin: 50% 100%;
   overflow: hidden;
-  animation: pulse 1.8s ease-out infinite, jiggle 1.8s ease-in-out infinite;
+  animation: pulse 1.8s ease-out infinite, jiggle 1.5s ease-in-out infinite;
 }
 @keyframes jiggle {
-  0%, 100% { transform: translateY(0) scale(1, 1); }
-  8%  { transform: translateY(0) scale(1.12, .86); }
-  22% { transform: translateY(-18px) rotate(-6deg) scale(.95, 1.08); }
-  34% { transform: translateY(0) rotate(4deg) scale(1.1, .9); }
-  44% { transform: translateY(-9px) rotate(-3deg); }
-  54% { transform: translateY(0) rotate(2deg) scale(1.05, .95); }
-  62% { transform: translateY(-3px) rotate(0); }
-  70% { transform: translateY(0) scale(1, 1); }
+  0%, 100% { transform: translateY(0) scale(1, 1) rotate(0); }
+  6%  { transform: translateY(0) scale(1.2, .8); }
+  18% { transform: translateY(-30px) rotate(-10deg) scale(.9, 1.12); }
+  28% { transform: translateY(0) rotate(8deg) scale(1.18, .82); }
+  36% { transform: translateY(-16px) rotate(-8deg) scale(.95, 1.06); }
+  44% { transform: translateY(0) rotate(6deg) scale(1.1, .9); }
+  50% { transform: translateY(-7px) rotate(-6deg); }
+  56% { transform: translateY(0) rotate(5deg); }
+  61% { transform: rotate(-4deg); }
+  66% { transform: rotate(3deg); }
+  71% { transform: rotate(-2deg); }
+  76% { transform: rotate(0) scale(1, 1); }
 }
 .btn.pulse::after {
   content: "";
