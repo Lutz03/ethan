@@ -112,3 +112,15 @@ if (jolli) {
   });
   jolli.addEventListener("animationend", () => jolli.classList.remove("jump"));
 }
+
+// Flash the RSVP card after jumping to it
+const rsvpCard = document.getElementById("rsvp");
+document.querySelectorAll('a[href="#rsvp"]').forEach((a) =>
+  a.addEventListener("click", () => {
+    rsvpCard.classList.remove("flash");
+    setTimeout(() => rsvpCard.classList.add("flash"), 600);
+  })
+);
+rsvpCard.addEventListener("animationend", (e) => {
+  if (e.target === rsvpCard) rsvpCard.classList.remove("flash");
+});
