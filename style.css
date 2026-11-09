@@ -36,11 +36,42 @@ h1, h2, h3, .eyebrow, .btn, .countdown span {
   padding: 72px 16px 64px;
   color: #fff;
   background:
-    radial-gradient(circle at 50% 100%, transparent 0 150px, rgba(255,255,255,.18) 151px 154px, transparent 155px),
-    linear-gradient(90deg, transparent calc(50% - 2px), rgba(255,255,255,.12) calc(50% - 2px) calc(50% + 2px), transparent calc(50% + 2px)),
-    radial-gradient(circle at 50% 50%, transparent 0 90px, rgba(255,255,255,.12) 91px 94px, transparent 95px),
+    repeating-linear-gradient(90deg, transparent 0 46px, rgba(0,0,0,.035) 46px 48px),
     linear-gradient(160deg, var(--red) 0%, var(--red-deep) 60%, var(--maroon) 100%);
   border-bottom: 8px solid var(--ball);
+}
+
+.hero > :not(svg) { position: relative; z-index: 1; }
+
+.court {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: min(900px, 160%);
+  height: auto;
+  opacity: .2;
+  pointer-events: none;
+}
+
+.hoop {
+  position: absolute;
+  top: 16px;
+  right: max(16px, calc(50% - 400px));
+  width: 120px;
+  transform: rotate(8deg);
+  filter: drop-shadow(0 6px 0 rgba(0,0,0,.2));
+  pointer-events: none;
+}
+
+@media (max-width: 620px) {
+  .hoop { width: 64px; top: 8px; right: 8px; }
+}
+
+@media (max-width: 360px) {
+  .countdown { gap: 6px; }
+  .countdown div { min-width: 60px; }
+  .countdown span { font-size: 1.6rem; }
 }
 
 .eyebrow {
