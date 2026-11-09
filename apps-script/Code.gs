@@ -1,5 +1,10 @@
-// Google Apps Script — paste into Extensions > Apps Script of your Google Sheet.
-// Saves each RSVP (with the guest's message to Ethan) to the "RSVP" tab.
+// Google Apps Script — saves each RSVP (with the guest's message to Ethan) to the "RSVP" tab.
+//
+// Setup:
+// 1. Google Sheet > Extensions > Apps Script, paste this file, save.
+// 2. Deploy > New deployment > Web app (Execute as: Me, Who has access: Anyone).
+// 3. Copy the Web app URL (ends in /exec) into SHEET_URL at the top of script.js.
+// After editing this file later: Deploy > Manage deployments > Edit > New version.
 
 const HEADERS = ["Timestamp", "Name", "Contact", "Attending", "Guests", "Additional Guest", "Message to Ethan"];
 
