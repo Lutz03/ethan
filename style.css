@@ -271,11 +271,10 @@ main {
 }
 
 .card {
-  /* jersey-trim stripe on top + faint court arc in the corner */
+  /* jersey-trim stripe on top + faint basketball drawing in the corner */
   background:
     linear-gradient(var(--red) 0 6px, #fff 6px 8px, #1a1a1a 8px 10px, transparent 10px),
-    radial-gradient(circle at 100% 100%, transparent 0 78px, rgba(230, 57, 70, .1) 79px 82px, transparent 83px),
-    radial-gradient(circle at 100% 100%, transparent 0 150px, rgba(230, 57, 70, .07) 151px 154px, transparent 155px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23e63946' stroke-opacity='.14' stroke-width='3' stroke-linecap='round'%3E%3Ccircle cx='50' cy='50' r='46'/%3E%3Cpath d='M50 4V96M4 50H96M19 17Q42 50 19 83M81 17Q58 50 81 83'/%3E%3C/g%3E%3C/svg%3E") right -36px bottom -36px / 150px no-repeat,
     var(--card);
   border-radius: var(--radius);
   overflow: hidden;
