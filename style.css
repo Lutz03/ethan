@@ -230,7 +230,7 @@ main {
 .card p { margin: 0 0 10px; }
 
 .intro { text-align: center; background: var(--maroon); color: #fff; border-top: 6px solid var(--ball); }
-.intro h2 { color: #fff; }
+.intro h2 { color: #fff; white-space: nowrap; font-size: clamp(1.15rem, 6vw, 1.8rem); }
 
 .grid-2 { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; }
 @media (max-width: 620px) { .grid-2 { grid-template-columns: 1fr; } }
