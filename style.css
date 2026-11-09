@@ -297,7 +297,7 @@ main {
 .emoji-list { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 10px; }
 .emoji-list li { display: flex; gap: 14px; align-items: flex-start; padding: 10px 12px; border-radius: 14px; background: var(--bg); }
 .emoji-list li { align-items: center; }
-.emoji-list li > span { font-size: 2.6rem; line-height: 1; flex-shrink: 0; }
+.emoji-list li > span { font-size: 3.8rem; line-height: 1; flex-shrink: 0; }
 .emoji-list .e { font-style: normal; font-size: 1.6em; line-height: 1; vertical-align: middle; }
 
 .swatches { display: flex; gap: 8px; margin-top: 8px; }
