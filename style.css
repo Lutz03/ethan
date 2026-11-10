@@ -504,6 +504,35 @@ main {
 }
 .btn.pulse:hover { animation: pulse 1.8s ease-out infinite; transform: translateY(-3px) scale(1.08); }
 
+/* music toggle */
+.music-btn {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 40;
+  width: 56px;
+  height: 56px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  background: radial-gradient(circle at 35% 30%, #ffb35c, var(--ball) 55%, var(--ball-dark));
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .25);
+}
+.music-btn .note { display: inline-block; }
+.music-btn.playing { animation: spin 4s linear infinite; }
+.music-btn.playing .note { animation: beat .5s ease-in-out infinite alternate; }
+.music-btn:not(.playing)::after {
+  content: "";
+  position: absolute;
+  inset: 50% 8px auto;
+  height: 3px;
+  background: #fff;
+  transform: rotate(-45deg);
+  border-radius: 2px;
+}
+@keyframes beat { to { transform: scale(1.25); } }
+
 @media (prefers-reduced-motion: reduce) {
   .rsvp-title span, .dribble, .btn.pulse, .btn.pulse::after, .rsvp.flash { animation: none; }
   .js .program li.hide { opacity: 1; transform: none; }

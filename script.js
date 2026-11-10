@@ -124,3 +124,37 @@ document.querySelectorAll('a[href="#rsvp"]').forEach((a) =>
 rsvpCard.addEventListener("animationend", (e) => {
   if (e.target === rsvpCard) rsvpCard.classList.remove("flash");
 });
+
+// Background music: browsers block autoplay, so start on the first tap
+const music = document.getElementById("bg-music");
+const musicBtn = document.getElementById("music-btn");
+music.volume = 0.4;
+
+function setPlaying(on) {
+  musicBtn.classList.toggle("playing", on);
+  musicBtn.setAttribute("aria-pressed", on);
+  musicBtn.setAttribute("aria-label", on ? "Pause music" : "Play music");
+}
+
+function playMusic() {
+  music.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+}
+
+musicBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  if (music.paused) playMusic();
+  else { music.pause(); setPlaying(false); }
+});
+
+// iOS only allows audio from a completed tap (touchend/click), not pointerdown
+const START_EVENTS = ["touchend", "click", "keydown"];
+function firstTap(e) {
+  START_EVENTS.forEach((t) => document.removeEventListener(t, firstTap));
+  if (e.target.closest && e.target.closest("#music-btn")) return; // the button handles itself
+  if (music.paused) playMusic();
+}
+
+// Try real autoplay first; if the browser blocks it, start on the first tap.
+music.play()
+  .then(() => setPlaying(true))
+  .catch(() => START_EVENTS.forEach((t) => document.addEventListener(t, firstTap)));
