@@ -128,7 +128,7 @@ rsvpCard.addEventListener("animationend", (e) => {
 // Background music: browsers block autoplay, so start on the first tap
 const music = document.getElementById("bg-music");
 const musicBtn = document.getElementById("music-btn");
-const MUSIC_VOLUME = 0.4; // 40%
+const MUSIC_VOLUME = 0.75; // 75%
 music.volume = MUSIC_VOLUME;
 
 // iPhone/iPad ignore audio.volume, so on the first tap route the music
