@@ -2,7 +2,7 @@
 const SHEET_URL = "https://script.google.com/macros/s/AKfycbz4MR1qJZrQzx9XJm2uoMw9VL2dAnKyzKf88rurZtiPk_kPFNdTHwqjXQm2sktpWS1Tww/exec";
 
 // Party start, Philippine time (UTC+8). Adjust the time if needed.
-const PARTY_DATE = new Date("2026-11-22T10:00:00+08:00");
+const PARTY_DATE = new Date("2026-11-22T09:30:00+08:00");
 
 document.documentElement.classList.add("js");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

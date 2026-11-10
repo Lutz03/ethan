@@ -213,6 +213,18 @@ h1, h2, h3, .eyebrow, .btn, .countdown span {
   color: #ffe7d6;
 }
 
+.time {
+  display: table;
+  margin: 8px auto 0;
+  padding: 3px 14px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, .22);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: .03em;
+}
+
 .countdown {
   display: flex;
   justify-content: center;
