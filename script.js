@@ -128,7 +128,22 @@ rsvpCard.addEventListener("animationend", (e) => {
 // Background music: browsers block autoplay, so start on the first tap
 const music = document.getElementById("bg-music");
 const musicBtn = document.getElementById("music-btn");
-music.volume = 0.4;
+const MUSIC_VOLUME = 0.4; // 40%
+music.volume = MUSIC_VOLUME;
+
+// iPhone/iPad ignore audio.volume, so on the first tap route the music
+// through a Web Audio gain node, which iOS does respect.
+let audioCtx;
+function setupVolume() {
+  if (audioCtx) return;
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) return;
+  audioCtx = new AC();
+  const gain = audioCtx.createGain();
+  gain.gain.value = MUSIC_VOLUME;
+  audioCtx.createMediaElementSource(music).connect(gain).connect(audioCtx.destination);
+  music.volume = 1; // the gain node now controls loudness
+}
 
 function setPlaying(on) {
   musicBtn.classList.toggle("playing", on);
@@ -137,6 +152,8 @@ function setPlaying(on) {
 }
 
 function playMusic() {
+  setupVolume();
+  if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
   music.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
 }
 
